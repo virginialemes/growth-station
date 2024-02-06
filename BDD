@@ -1,75 +1,86 @@
 Funcionalidade: Login
 
   Contexto:
-    Dado que eu visite a página de login em 'https://growth-station-client-git-processo-qa-growthmachine.vercel.app/login'
+    Dado que o usuário visite a página de login em 'https://growth-station-client-git-processo-qa-growthmachine.vercel.app/login'
 
   Cenário: Login bem-sucedido com credenciais válidas
-    Quando eu inserir o email válido 'usuariodaempresa3@gmail.com' e senha 'Senha.123'
-    E clicar no botão de login
-    Então devo ser redirecionado para 'https://growth-station-client-git-processo-qa-growthmachine.vercel.app/materials'
-    E devo ver 'MANUAIS PARA CONSULTA' na página
+    Dado que o usuário visite a página de login em 'https://growth-station-client-git-processo-qa-growthmachine.vercel.app/login'
+    E inserir o email válido 'usuariodaempresa3@gmail.com' e senha válida 'Senha.123'
+    Quando clicar no botão de login
+    Então deve ser redirecionado para 'https://growth-station-client-git-processo-qa-growthmachine.vercel.app/materials'
 
   Cenário: Login com usuário inválido
-    Quando eu inserir o email inválido 'usuariodaempresa4@gmail.com'
+    Dado que o usuário visite a página de login em 'https://growth-station-client-git-processo-qa-growthmachine.vercel.app/login'
+    E inserir o email inválido 'usuariodaempresa4@gmail.com'
     E inserir a senha válida 'Senha.123'
-    E clicar no botão de login
-    Então devo ver 'E-mail ou senha inválidos'
-    E a URL não deve ser 'https://growth-station-client-git-processo-qa-growthmachine.vercel.app/'
+    Quando clicar no botão de login
+    Então deverá ter um alerta com 'E-mail ou senha inválidos'
+    E não poderá ser redirecionado para a URL 'https://growth-station-client-git-processo-qa-growthmachine.vercel.app/'
 
   Cenário: Login com senha inválida
-    Quando eu inserir o email válido 'usuariodaempresa3@gmail.com'
+    Dado que o usuário visite a página de login em 'https://growth-station-client-git-processo-qa-growthmachine.vercel.app/login'
+    E inserir o email válido 'usuariodaempresa3@gmail.com'
     E inserir a senha inválida 'Senha.1234'
-    E clicar no botão de login
-    Então devo ver 'E-mail ou senha inválidos'
-    E a URL não deve ser 'https://growth-station-client-git-processo-qa-growthmachine.vercel.app/'
+    Quando clicar no botão de login
+    Então deverá ter um alerta com 'E-mail ou senha inválidos'
+    E não poderá ser redirecionado para a URL 'https://growth-station-client-git-processo-qa-growthmachine.vercel.app/'
 
   Cenário: Tentativa de login com campos em branco
-    Quando eu clicar no botão de login sem inserir credenciais
-    Então devo ver 'E-mail ou senha inválidos'
-    E a URL não deve ser 'https://growth-station-client-git-processo-qa-growthmachine.vercel.app/'
+    Dado que o usuário visite a página de login em 'https://growth-station-client-git-processo-qa-growthmachine.vercel.app/login'
+    Quando clicar no botão de login sem inserir credenciais
+    Então deverá ter um alerta com 'E-mail ou senha inválidos'
+    E não poderá ser redirecionado para a URL 'https://growth-station-client-git-processo-qa-growthmachine.vercel.app/'
 
   Cenário: Acesso à página de recuperação de senha ao clicar em 'Esqueceu a senha?'
-    Quando eu clicar em 'Esqueceu a senha?'
-    Então devo ser redirecionado para 'https://growth-station-client-git-processo-qa-growthmachine.vercel.app/forgotPass'
-    E devo ver o campo de email e o botão 'Enviar E-mail'
+    Dado que o usuário visite a página de login em 'https://growth-station-client-git-processo-qa-growthmachine.vercel.app/login'
+    Quando clicar em 'Esqueceu a senha?'
+    Então deve ser redirecionado para 'https://growth-station-client-git-processo-qa-growthmachine.vercel.app/forgotPass' para recuperação da senha
 
   Cenário: Deve enviar um e-mail de recuperação após fornecer um e-mail válido
-    Quando eu clicar em 'Esqueceu a senha?'
+    Dado que o usuário visite a página de login em 'https://growth-station-client-git-processo-qa-growthmachine.vercel.app/login'
+    E clicar em 'Esqueceu a senha?'
     E inserir o email válido 'usuariodaempresa3@gmail.com'
-    E clicar em 'Enviar E-mail'
-    Então devo ver 'Email enviado com sucesso!'
+    Quando clicar em 'Enviar E-mail'
+    Então deverá ter um alerta com 'Email enviado com sucesso!'
 
   Cenário: Tentativa de recuperação de senha com e-mail inválido
-    Quando eu clicar em 'Esqueceu a senha?'
+    Dado que o usuário visite a página de login em 'https://growth-station-client-git-processo-qa-growthmachine.vercel.app/login'
+    E clicar em 'Esqueceu a senha?'
     E inserir o email inválido 'teste@teste.com'
-    E clicar em 'Enviar E-mail'
-    Então devo ver 'Usuário não encontrado'
-    E a URL deve ser 'https://growth-station-client-git-processo-qa-growthmachine.vercel.app/forgotPass'
+    Quando clicar em 'Enviar E-mail'
+    Então deverá ter um alerta com 'Usuário não encontrado'
 
   Cenário: Acesso à página quando não é cliente ao clicar em 'Não é cliente?'
-    Quando eu clicar em 'Não é cliente?'
+    Dado que o usuário visite a página de login em 'https://growth-station-client-git-processo-qa-growthmachine.vercel.app/login'
+    Quando clicar em 'Não é cliente?'
+    Então será redirecionado para a página inicial da growth-station 
 
-  Cenário: Deve redirecionar para o LinkedIn
-    Quando eu clicar no link do LinkedIn
+  Cenário: Redirecionamento para o LinkedIn
+    Dado que o usuário visite a página de login em 'https://growth-station-client-git-processo-qa-growthmachine.vercel.app/login'
+    Quando clicar no widget do LinkedIn
     Então uma nova janela deve ser aberta com 'about:blank'
     E a URL deve incluir 'linkedin.com/company/growthmachine'
 
-  Cenário: Deve redirecionar para o Facebook
-    Quando eu clicar no link do Facebook
+  Cenário: Redirecionamento para o Facebook
+    Dado que o usuário visite a página de login em 'https://growth-station-client-git-processo-qa-growthmachine.vercel.app/login'
+    Quando clicar no widget do Facebook
     Então uma nova janela deve ser aberta com 'about:blank'
     E a URL deve incluir 'facebook.com/growthmachineMC'
 
-  Cenário: Deve redirecionar para o YouTube
-    Quando eu clicar no link do YouTube
+  Cenário: Redirecionamento para o YouTube
+    Dado que o usuário visite a página de login em 'https://growth-station-client-git-processo-qa-growthmachine.vercel.app/login'
+    Quando clicar no link do YouTube
     Então uma nova janela deve ser aberta com 'about:blank'
     E a URL deve incluir 'youtube.com/@thiago.reis.gm.'
 
-  Cenário: Deve redirecionar para o Spotify
-    Quando eu clicar no link do Spotify
+  Cenário: Redirecionamento para o Spotify
+    Dado que o usuário visite a página de login em 'https://growth-station-client-git-processo-qa-growthmachine.vercel.app/login'
+    Quando clicar no link do Spotify
     Então uma nova janela deve ser aberta com 'about:blank'
     E a URL deve incluir 'open.spotify.com/show/7lKcTLsJg6BOXta99u1FzW'
 
-  Cenário: Deve redirecionar para o Instagram
-    Quando eu clicar no link do Instagram
+  Cenário: Redirecionamento para o Instagram
+    Dado que o usuário visite a página de login em 'https://growth-station-client-git-processo-qa-growthmachine.vercel.app/login'
+    Quando clicar no link do Instagram
     Então uma nova janela deve ser aberta com 'about:blank'
     E a URL deve incluir 'instagram.com/growthmachinebr/'
